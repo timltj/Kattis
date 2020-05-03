@@ -51,6 +51,7 @@ public class Teque {
                 case "get":
                     pw.write(Integer.toString(get(x)) + '\n');
                     break;
+                default:
             }       
         }
         pw.flush();
@@ -58,24 +59,24 @@ public class Teque {
 
     /* client methods */           
     private static void push_front(int x) { // push_front 
-        frontMin -= 1;
+        frontMin--;
         front.put(frontMin, x);
         balance();
     }
    
     private static void push_back(int x) { // push_back
         back.put(backMax, x);
-        backMax += 1;
+        backMax++;
         balance();
     }
 
     private static void push_middle(int x) { // push_middle
         if (front.size() == back.size()) {
-            backMin -= 1;
+            backMin++;
             back.put(backMin, x);
         } else {
             front.put(frontMax, back.get(backMin));
-            frontMax += 1;
+            frontMax++;
             back.put(backMin, x);
         }
     }
@@ -91,15 +92,15 @@ public class Teque {
     // balance size of front and back queues
     private static void balance() {
         if (front.size() > back.size()) {
-            frontMax -= 1;
-            backMin -= 1;
+            frontMax--;
+            backMin--;
             back.put(backMin, front.get(frontMax));
             front.remove(frontMax);
         } else {
             front.put(frontMax, back.get(backMin));
-            frontMax += 1;
-            backMin += 1;
-            back.remove(backMin-1);
+            frontMax++;
+            backMin++;
+            back.remove(backMin--);
         }
     }
 }
