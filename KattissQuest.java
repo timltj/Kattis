@@ -17,12 +17,11 @@ public class KattissQuest {
         /* fast io */
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         PrintWriter pw = new PrintWriter(System.out);
+       
+        int n = Integer.parseInt(br.readLine());
 
         // treeset to store quests
         TreeSet<Quest> ts = new TreeSet<>();
-
-        // number of inputs
-        int n = Integer.parseInt(br.readLine());
 
         /* main loop */
         for (int i = 0; i < n; i++) {
@@ -75,6 +74,7 @@ class Quest implements Comparable<Quest> {
         this.gold = gold;
         this.uniqueID = this.hashCode();
     }
+    
     public Quest(int energy, int gold, int uniqueID) {
         this.energy = energy;
         this.gold = gold;
@@ -84,24 +84,12 @@ class Quest implements Comparable<Quest> {
     /* overrides */
     @Override
     public int compareTo(Quest another) {
-        if (this.energy < another.energy) {
-            return -1;
-        } else if (this.energy > another.energy) {
-            return 1;
-        } else { // rank by gold
-            if (this.gold < another.gold) {
-                return -1;
-            } else if (this.gold > another.gold) {
-                return 1;
-            } else { // compare by uniqueID     
-                if (this.uniqueID < another.uniqueID) {
-                    return -1;
-                } else if (this.uniqueID > another.uniqueID) {
-                    return 1;
-                } else {
-                    return 0;
-                }
-            }            
-        }
+        if (this.energy != another.energy) {
+            return this.energy - another.energy;
+        } else if (this.gold != another.gold) { // rank by gold
+            return this.gold - another.gold;
+        } else { // compare by uniqueID     
+            return this.uniqueID - another.uniqueID;
+        }            
     }
 }
