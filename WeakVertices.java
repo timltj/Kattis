@@ -18,25 +18,24 @@ public class WeakVertices {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         PrintWriter pw = new PrintWriter(System.out);
         
-        /* list to store output */
+        // list to store output
         ArrayList<Integer> list = new ArrayList<Integer>();
 
         /* main loop */
         while (true) {
             int n = Integer.parseInt(br.readLine());
-
-            // termination
-            if (n == -1) { 
+           
+            if (n == -1) { // termination
                 break;
             }
 
             // 2D array to store adjacency matrix
             int[][] mtx = new int[n][n];
 
-            // array to mark triangle vertex
+            // boolean array to mark triangle vertex
             boolean[] marker = new boolean[n];
 
-            // read input
+            // input
             for (int i = 0; i < n; i++) {
                 StringTokenizer st = new StringTokenizer(br.readLine());
                 for (int j = 0; j < n; j++) {
@@ -50,10 +49,10 @@ public class WeakVertices {
                     for (int z = 0; z < n; z++) {
                         if (x != y && x != z && y != z) { // check for distinct
                             if (mtx[x][y] == 1 && mtx[x][z] == 1 && mtx[y][z] == 1) { // update marker
-							    marker[x] = true;
-							    marker[y] = true;
-							    marker[z] = true;
-						    }
+                                marker[x] = true;
+                                marker[y] = true;
+                                marker[z] = true;
+                            }
                         }
                     }
                 }
@@ -65,8 +64,8 @@ public class WeakVertices {
                     list.add(i);
                 }
             }
-            list.add(null); // represents new graph
 
+            list.add(null); // represents new graph
         }
         
         /* output */
