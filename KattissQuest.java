@@ -86,7 +86,7 @@ class Quest implements Comparable<Quest> {
     public int compareTo(Quest another) {
         if (this.energy != another.energy) {
             return this.energy - another.energy;
-        } else if (this.gold != another.gold) { // rank by gold
+        } else if (this.gold != another.gold) { // compare by gold
             return this.gold - another.gold;
         } else { // compare by uniqueID     
             return this.uniqueID - another.uniqueID;
