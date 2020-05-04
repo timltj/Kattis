@@ -10,49 +10,45 @@
  * Lim Tiang Jung, Timothy 
  */
 
-import java.text.*;
-import java.util.*;
+import java.util.Scanner;
 
 public class TrainPassengers {
 	public static void main(String[] args) {
 		
-		Scanner sc = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
 
-		int C = sc.nextInt();
+        int C = sc.nextInt();
 		int n = sc.nextInt();
 		sc.nextLine();
+		
+		boolean valid = true; // track validity
 
-		// record validity
-		boolean valid = true;
+        int count = 0; // track passenger count
 
-		// record passenger count
-		int count = 0;	
-
-		for (int x = 0; x < n; x++) {
-			int exit = sc.nextInt();
+		for (int i = 0; i < n; i++) {
+            int exit = sc.nextInt();
 			int enter = sc.nextInt();
 			int stay = sc.nextInt();
 
 			count -= exit;
 			count += enter;
 
-			/* check validity */
+			// check validity
 			if (count < 0 || count > C || count - stay < 0) {
 				valid = false;
 			}
 			if (stay > 0 && stay + count <= C) {
 				valid = false;
 			}
-			if ((x == n-1 && count != 0) || (x == n-1 && stay != 0) || (x == n-1 && enter != 0)) {
+			if (i == n-1 && (count != 0 || stay != 0 || enter != 0)) {
 				valid = false;
 			}
 		}
 
-		// print
-		if (valid == true) {
+		/* output */
+		if (valid) {
 			System.out.println("possible");
-		}
-		else {
+		} else {
 			System.out.println("impossible");
 		}
 	}
