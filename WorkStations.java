@@ -38,7 +38,7 @@ public class WorkStations {
         int curVacancyTime = 0;
         while (!pqR.isEmpty()) {
             doneTime = pqR.peek().arrTime + pqR.peek().activity - 1; // time when researcher is done
-            for (int x = 0; x < pqWS.size()+1; x++) {
+            for (int x = 0; x < pqWS.size() + 1; x++) {
                 if (pqWS.isEmpty()) { // first researcher
                     pqWS.add(doneTime);
                     pqR.poll();
