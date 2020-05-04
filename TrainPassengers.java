@@ -13,43 +13,43 @@
 import java.util.Scanner;
 
 public class TrainPassengers {
-	public static void main(String[] args) {
-		
+    public static void main(String[] args) {
+        
         Scanner sc = new Scanner(System.in);
 
         int C = sc.nextInt();
-		int n = sc.nextInt();
-		sc.nextLine();
-		
-		boolean valid = true; // track validity
+        int n = sc.nextInt();
+        sc.nextLine();
+        
+        boolean valid = true; // track validity
 
         int count = 0; // track passenger count
 
-		for (int i = 0; i < n; i++) {
+        for (int i = 0; i < n; i++) {
             int exit = sc.nextInt();
-			int enter = sc.nextInt();
-			int stay = sc.nextInt();
+            int enter = sc.nextInt();
+            int stay = sc.nextInt();
 
-			count -= exit;
-			count += enter;
+            count -= exit;
+            count += enter;
 
-			// check validity
-			if (count < 0 || count > C || count - stay < 0) {
-				valid = false;
-			}
-			if (stay > 0 && stay + count <= C) {
-				valid = false;
-			}
-			if (i == n-1 && (count != 0 || stay != 0 || enter != 0)) {
-				valid = false;
-			}
-		}
+            // check validity
+            if (count < 0 || count > C || count - stay < 0) {
+                valid = false;
+            }
+            if (stay > 0 && stay + count <= C) {
+                valid = false;
+            }
+            if (i == n-1 && (count != 0 || stay != 0 || enter != 0)) {
+                valid = false;
+            }
+        }
 
-		/* output */
-		if (valid) {
-			System.out.println("possible");
-		} else {
-			System.out.println("impossible");
-		}
-	}
+        /* output */
+        if (valid) {
+            System.out.println("possible");
+        } else {
+            System.out.println("impossible");
+        }
+    }
 }
